@@ -27,7 +27,7 @@ public class ClienteController {
 	@Autowired
 	private IClienteService clienteService;
 
-	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de Clientes");
 		model.addAttribute("clientes", clienteService.findAll());
@@ -64,7 +64,7 @@ public class ClienteController {
 			clienteService.delete(id);
 		}
 		flash.addFlashAttribute("success", "Cliente eliminado con exito");
-		return "redirect:/listar";
+		return "redirect:/";
 	}
 	
 	//MICROSERVICIO
