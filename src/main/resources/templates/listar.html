@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+		<div class="card ">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a class="btn btn-primary btn-xs" th:href="@{/form}">Crear
+						cliente</a>
+				</h4>
+				<table class="table table-striped table-bordered">
+					<thead class="thead-inverse">
+						<tr>
+							<th>id</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>DUI</th>
+							<th>Fecha Registro</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody th:if="${clientes!=null}">
+						<tr>
+							<td class="col-sm-6" th:if=${clientes.isEmpty()}>No hay
+								registros</td>
+						</tr>
+						<tr th:each="cliente: ${clientes}">
+							<td th:text="${cliente.cod_cliente}"></td>
+							<td th:text="${cliente.nombre}"></td>
+							<td th:text="${cliente.apellidos}"></td>
+							<td th:text="${cliente.dui}"></td>
+							<td th:text="${cliente.creatAt}"></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/nuevaCuenta/} + ${cliente.cod_cliente}"><span class="fas fa-address-book" title="Crear Cuenta"></span></a> <a
+								class="btn btn-success btn-xs "
+								th:href="@{/transaccion/} + ${cliente.cod_cliente}" 
+								><span class="fas fa-money-check-alt" title="Operar"></span></a><a
+								class="btn btn-danger btn-xs  "id="eliminar"
+								th:href="@{/eliminar/} + ${cliente.cod_cliente}"><span id="eliminar" class="fas fa-backspace" title="Eliminar" ></span></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

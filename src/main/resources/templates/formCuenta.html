@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	
+	<div class="container py-4">
+		<div class="card bg-dark text-white">
+			<div class="card-header">Formulario Creacion de Cuenta</div>
+			<div class="card-body ">
+				<form th:action="@{/nuevaCuenta}" th:object="${cuenta}" method="post">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre de Cuenta</label>
+						<div class="col-sm-6 py-2">
+							<input type="text" th:field="*{nombre_cuenta}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre_cuenta')}" th:errors="*{nombre_cuenta}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Monto de Apertura</label>
+						<div class="col-sm-6 py-2">
+							<input type="text" th:field="*{monto_apertura}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('monto_apertura')}" th:errors="*{monto_apertura}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Estado de Cuenta</label>
+						<div class="col-sm-6 py-2">
+							
+								
+								<select th:field="*{estado_cuenta}" class="browser-default custom-select" th:errorclass="'form-control alert-danger'">
+								<option selected="" value="k">Seleccione una opcion</option>
+								<option value=A>Activo</option>
+								<option value=I>Inactivo</option>
+							</select>
+								
+								<small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('estado_cuenta')}" th:errors="*{estado_cuenta}"></small>
+						</div>
+					</div>
+					<br />
+					<div class="form-group">
+						<div class="col-sm-6 py-2">
+							<input type="submit" value="Crear Cliente" class="btn btn-secondary" />
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+
+
+
+	</div>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
