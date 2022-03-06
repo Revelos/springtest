@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.springwebjpa.app.models.entity.Cliente;
 import com.springwebjpa.app.models.service.IClienteService;
 
-@Controller
+@RestController
 @SessionAttributes("cliente")
 public class ClienteController {
 
