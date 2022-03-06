@@ -10,13 +10,3 @@ INSERT INTO cuenta VALUES('ah123','A','2022-01-01',1400.60,'Cuenta de Debito',56
 INSERT INTO cuenta VALUES('ah124','F','2022-01-01',56050.60,'Cuenta de Ahorro',560.60,2);
 
 
-
-CREATE TRIGGER `Cambiar_Saldo` 
-AFTER INSERT ON `transaccion` 
-FOR EACH ROW BEGIN 
-IF new.id_tipo_transaccion=1 THEN 
-UPDATE cuenta SET cuenta.saldo=cuenta.saldo+new.valor_monetario WHERE cuenta.numero_cuenta=new.cuenta_numero_cuenta; 
-ELSE 
-UPDATE cuenta SET cuenta.saldo=cuenta.saldo-new.valor_monetario WHERE cuenta.numero_cuenta=new.cuenta_numero_cuenta; 
-END IF; 
-END 
